@@ -4,7 +4,19 @@ let prevOriginalValue = ''
 
 function updateOriginalValue (currentStringValue) {
   if (currentStringValue.length >= prevValue.length) {
-    originalValue += currentStringValue.substr(prevValue.length)
+    let j = 0
+    originalValue = ''
+    for(const element of currentStringValue) {
+      if(j < prevValue.length && element === prevValue[j]) {
+        if (prevValue[j] >= '0' && prevValue[j] <= '9') {
+          originalValue += prevValue[j]
+        }
+        j++
+      } else {
+        originalValue += element
+      } 
+    }
+    console.log(originalValue)
   } else {
     originalValue = ''
     for (const element of currentStringValue) {
@@ -29,7 +41,7 @@ export function formatNumber (event) {
   prevOriginalValue = originalValue
   updateOriginalValue(currentStringValue)
   originalValue = originalValue.substr(0, 10)
-  if (!(/^\d+$/.test(originalValue))) {
+  if (originalValue.length && !(/^\d+$/.test(originalValue))) {
     originalValue = prevOriginalValue
   }
   currentStringValue = originalValue

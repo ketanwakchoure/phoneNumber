@@ -1,4 +1,5 @@
-import { formatNumber, clearValues } from './phoneNumber/index.js'
+import { formatNumber, clearValues } from '../src/index.js'
+import should from 'should'
 
 describe('Testing the phone number input', () => {
   const events = {
@@ -54,9 +55,19 @@ describe('Testing the phone number input', () => {
     events.target.value = '1290'
     formatNumber(events)
     events.target.value.should.equal('(129) 0')
-    events.target.value = '1290a'
+    events.target.value = '(129) 0a'
     formatNumber(events)
     events.target.value.should.equal('(129) 0')
+    done()
+  })
+
+  it('should format even if multiple character are added in middle.', function(done) {
+    events.target.value = '123456'
+    formatNumber(events)
+    events.target.value.should.equal('(123) 456')
+    events.target.value = '(123) 789456'
+    formatNumber(events)
+    events.target.value.should.equal('(123) 789-456')
     done()
   })
 })
