@@ -15,8 +15,8 @@
                 "--colors",
                 "test" //or "test/adaptors/http/export/test.export.custom.js"
             ],
-            "cwd": "/Users/ketanwakchoure/Desktop/leetcodeChallenge/phoneNumber",
-            "runtimeExecutable": "/Users/ketanwakchoure/.nvm/versions/node/v14.18.1/bin/node",
+            "cwd": "YOUR DIRECTORY",
+            "runtimeExecutable": "/Users/{Username}/.nvm/versions/node/v14.18.1/bin/node",
             "env": {
                 "NODE_ENV": "unittest"
             },
